@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Floor
+  - MoveFloor
+  - StartFloor
+  - MenuStartFloor
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Light
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1645105449
+    locked: 0
+  - name: StarsParticle
+    uniqueID: 585347661
+    locked: 0
+  - name: StartFloor
+    uniqueID: 3595527623
+    locked: 0
+  - name: Floor
+    uniqueID: 1002311191
+    locked: 0
+  - name: MoveFloor
+    uniqueID: 2394285399
+    locked: 0
+  - name: PlayerTrail
+    uniqueID: 1046543313
+    locked: 0
+  - name: Player
+    uniqueID: 3542864001
+    locked: 0
+  - name: TopLight
+    uniqueID: 2013575739
+    locked: 0
+  - name: EnvironmentLight
+    uniqueID: 3168734215
+    locked: 0
+  - name: ContrastLight
+    uniqueID: 3817920067
+    locked: 0
+  - name: GameOverPanel
+    uniqueID: 108315279
+    locked: 0
