@@ -11,7 +11,10 @@ public class MenuManager : MonoBehaviour
 
     public Button gameModeButton;
     public TMP_Text gameModeText;
-    public bool isTouchScreen = true; //TouchScreen:true TouchButton:false
+    public bool isTouchScreen = false; //TouchScreen:true TouchButton:false
+    public GameObject languageTab;
+    public Image currentFlag;
+    
 
     private void Awake()
     {
@@ -33,7 +36,7 @@ public class MenuManager : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("gameMode"))
         {
-            PlayerPrefs.SetInt("gameMode", 1);
+            PlayerPrefs.SetInt("gameMode", 0);
             Load();
         }
         else
@@ -41,6 +44,35 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.GetInt("gameMode");
             Load();
         }
+    }
+
+    //-----Language Garanti Kýsmý-----
+    public void OpenLanguageTab()
+    {
+        if (languageTab != null)
+        {
+            languageTab.SetActive(true);
+        }
+    }
+
+    public void selectEnglishA()
+    {
+        LanguageManager.Instance.selectEnglish();
+    }
+
+    public void selectTurkishA()
+    {
+        LanguageManager.Instance.selectTurkish();
+    }
+
+    public void selectGermanA()
+    {
+        LanguageManager.Instance.selectGerman();
+    }
+
+    public void selectSpanishA()
+    {
+        LanguageManager.Instance.selectSpanish();
     }
 
     //-----OYUN MODU BELÝRLEME-----

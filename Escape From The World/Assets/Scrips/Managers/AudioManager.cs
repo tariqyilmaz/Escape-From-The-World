@@ -28,8 +28,7 @@ public class AudioManager : MonoBehaviour
     private bool isMusic = true;
     private bool isFirstScene = true; //Ses tuþlarýnýn çalýþmasý için kontrolcü
 
-    public int interstitialAdCounter = 2; // Bunlarý burada tanýmlamak zorunda kaldým çünkü Gamemanager yeniden baþladýðý için sayaçlar da yeniden baþlýyordu sürekli
-    public int rewardedAdCounter = 5;
+    public int adCounter = 10; // Bunu burada tanýmlamak zorunda kaldým çünkü Gamemanager yeniden baþladýðý için sayaçlar da yeniden baþlýyordu sürekli
     bool isMusicFinish;
 
     private void Awake()

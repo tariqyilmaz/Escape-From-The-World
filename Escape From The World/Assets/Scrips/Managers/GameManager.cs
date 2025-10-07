@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     public static bool isDeathSound = true; //Bu ölüm sesinin sadece bir kez oynatýlmasý için bir kontrolcü
 
     //General
-    
     public bool isDeath = false;
     public bool isDeathController = false;
     public bool isAdController = false;
@@ -177,6 +176,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameOverAnimation());
         yield return new WaitForSeconds(12f);
         playerRb.constraints = RigidbodyConstraints2D.FreezePosition;
+        player.SetActive(false);
     }
 
     IEnumerator GameOverAnimation()
@@ -250,23 +250,27 @@ public class GameManager : MonoBehaviour
     //-----Reklam Çalýþtýrma-----
     private void ShowAd()
     {
-        AudioManager.Instance.interstitialAdCounter -= 1;
-        Debug.Log(AudioManager.Instance.interstitialAdCounter);
-        AudioManager.Instance.rewardedAdCounter -= 1;
-        if (AudioManager.Instance.interstitialAdCounter == 0)
+        AudioManager.Instance.adCounter -= 1;
+        if (AudioManager.Instance.adCounter == 7 || AudioManager.Instance.adCounter == 4) //Sürekli reklam isteði göndermemesi için birer öncesine ekledim
+        {
+            AdManager.Instance.LoadInterstitialAd();
+        }
+        if (AudioManager.Instance.adCounter == 6 || AudioManager.Instance.adCounter == 3)
         {           
             AdManager.Instance.ShowIntertitialAd();
-            AudioManager.Instance.interstitialAdCounter = 2;
         }      
     }
 
     public void ShowRewardedAd()
     {
-        if (AudioManager.Instance.rewardedAdCounter == 0)
+        if (AudioManager.Instance.adCounter == 1)
+        {
+            AdManager.Instance.LoadRewardedAd();
+        }
+        if (AudioManager.Instance.adCounter == 0)
         {
             AdManager.Instance.ShowRewardedAd();
-            AudioManager.Instance.rewardedAdCounter = 5;
-            AudioManager.Instance.interstitialAdCounter = 2;
+            AudioManager.Instance.adCounter = 10;
         }
     }
 
@@ -279,5 +283,12 @@ public class GameManager : MonoBehaviour
             isAdController = false;
 
         }
+    }
+
+    //-----Tutorial-----
+
+    public void Tutorial()
+    {
+
     }
 }

@@ -37,6 +37,7 @@ public class SceneTransition : MonoBehaviour
         LeanTween.alpha(faderImage, 0, 0);
         LeanTween.alpha(faderImage, 1, 0.5f).setOnComplete(() =>
         {
+            LanguageManager.Instance.isFirstScene = true;
             Time.timeScale = 1f;
             DOTween.KillAll();
             SceneManager.LoadScene(0);
@@ -55,6 +56,11 @@ public class SceneTransition : MonoBehaviour
             DOTween.KillAll(); //Yeni sahne yüklenirken tweenler uyarý vermemesi için
             SceneManager.LoadScene(1);
         });
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }

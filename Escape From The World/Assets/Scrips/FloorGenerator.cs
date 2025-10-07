@@ -52,7 +52,6 @@ public class FloorGenerator : MonoBehaviour
                     spawnLocation.x = +4;
                 }
                 previousFloorX = (int)spawnLocation.x;
-                Debug.Log("Müdahale");
             }
             else
             {
