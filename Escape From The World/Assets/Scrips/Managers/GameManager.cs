@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
         }        
 
         bestScore.text = PlayerPrefs.GetFloat(nameof(score)).ToString(); //güncel bestscore u yazdýrdýk
-        gameOverPanel.DOAnchorPos(new Vector3(-195, -58, 0), 0.3f).SetEase(Ease.InBounce); //0.1 yapýyorum çünkü telefonlarda çok yavaþ (0.4f)   
+        gameOverPanel.DOAnchorPos(new Vector3(-195, -58, 0), 0.31f).SetEase(Ease.InBounce); //0.1 yapýyorum çünkü telefonlarda çok yavaþ (0.4f)   
         TMP_Text mainMenuText = mainMenuButton.GetComponentInChildren<TMP_Text>();
         TMP_Text startOverText = startOverButton.GetComponentInChildren<TMP_Text>();
         yield return new WaitForSeconds(2.5f);
@@ -251,10 +251,6 @@ public class GameManager : MonoBehaviour
     private void ShowAd()
     {
         AudioManager.Instance.adCounter -= 1;
-        if (AudioManager.Instance.adCounter == 7 || AudioManager.Instance.adCounter == 4) //Sürekli reklam isteði göndermemesi için birer öncesine ekledim
-        {
-            AdManager.Instance.LoadInterstitialAd();
-        }
         if (AudioManager.Instance.adCounter == 6 || AudioManager.Instance.adCounter == 3)
         {           
             AdManager.Instance.ShowIntertitialAd();
@@ -263,10 +259,6 @@ public class GameManager : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        if (AudioManager.Instance.adCounter == 1)
-        {
-            AdManager.Instance.LoadRewardedAd();
-        }
         if (AudioManager.Instance.adCounter == 0)
         {
             AdManager.Instance.ShowRewardedAd();

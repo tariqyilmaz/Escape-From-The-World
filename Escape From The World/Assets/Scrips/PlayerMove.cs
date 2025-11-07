@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private RectTransform doubleJumpRightWaitBarPicture;
 
     public Rigidbody2D rb;
-    public float moveSpeed = 5.2f;
+    public float moveSpeed = 5.3f;
     public float accel = 11f;   // ivmelenme hızı
     public float decel = 15f;   // yavaşlama hızı
 

@@ -15,9 +15,9 @@ public class AdManager : MonoBehaviour
     private RewardedAd _rewardedAd;
 
 #if UNITY_ANDROID
-    string adBannerID = "ca-app-pub-3940256099942544/6300978111"; //Test: ca-app-pub-3940256099942544/6300978111  Reel:ca-app-pub-3885973286274777/2209361050
-    string adInterstitialID = "ca-app-pub-3940256099942544/1033173712"; //Test: ca-app-pub-3940256099942544/1033173712  Reel:ca-app-pub-3885973286274777/5645171049
-    string adRewardedID = "ca-app-pub-3940256099942544/1033173712"; //Test: ca-app-pub-3940256099942544/1033173712  Reel:ca-app-pub-3885973286274777/9975298294
+    string adBannerID = "ca-app-pub-3885973286274777/2209361050"; //Test: ca-app-pub-3940256099942544/6300978111  Reel:ca-app-pub-3885973286274777/2209361050
+    string adInterstitialID = "ca-app-pub-3885973286274777/5645171049"; //Test: ca-app-pub-3940256099942544/1033173712  Reel:ca-app-pub-3885973286274777/5645171049
+    string adRewardedID = "ca-app-pub-3885973286274777/9975298294"; //Test: ca-app-pub-3940256099942544/1033173712  Reel:ca-app-pub-3885973286274777/9975298294
 #elif UNITY_IPHONE 
         //Ýlerde
 #else
@@ -113,7 +113,7 @@ public class AdManager : MonoBehaviour
             _interstitialAd = ad;
             _interstitialAd.OnAdFullScreenContentClosed += () =>
             {
-                //LoadInterstitialAd(); //Reklam kapatýldýðýnda tekrardan yeni reklamý yükleyecek
+                LoadInterstitialAd(); //Reklam kapatýldýðýnda tekrardan yeni reklamý yükleyecek
             };
             _interstitialAd.OnAdFullScreenContentFailed += (error) =>
             {
@@ -158,7 +158,7 @@ public class AdManager : MonoBehaviour
             _rewardedAd = ad;
             _rewardedAd.OnAdFullScreenContentClosed += () =>
             {
-                //LoadRewardedAd();
+                LoadRewardedAd();
             };
             _rewardedAd.OnAdFullScreenContentFailed += (error) =>
             {
