@@ -65,7 +65,23 @@ public class Floor : MonoBehaviour
             {
                 GameManager.Instance.stage = GameManager.GameStage.POWERUP; //PowerUp Bölümüne geçiþ
             }
-
+            if (gameObject.tag != "MenuStartFloor")
+            {
+                if (floorType == Floors.JUMPERFLOOR)
+                {
+                    GameManager.Instance.blinkPointLight(12f, 0.35f);
+                }
+                else if (GameManager.Instance.stage == GameManager.GameStage.POWERUP)
+                {
+                    GameManager.Instance.blinkPointLight(11f, 0.25f);
+                }
+                else
+                {
+                    GameManager.Instance.blinkPointLight(6f, 0.15f);
+                }
+                
+            }
+            
             //Ses için obje zemin kontrolü
             if (floorType == Floors.JUMPERFLOOR) 
             {

@@ -41,6 +41,7 @@ public class MoveFloor : MonoBehaviour
         {
             AudioManager.Instance.floorName = AudioManager.FloorName.MOVEFLOOR;
             AudioManager.Instance.FloorSound();
+            GameManager.Instance.blinkPointLight(7f, 0.2f);
 
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
 

@@ -12,7 +12,7 @@ public class SceneTransition : MonoBehaviour
     {
         faderImage.gameObject.SetActive(true);
         LeanTween.alpha(faderImage, 1, 0);
-        LeanTween.alpha(faderImage, 0, 0.5f).setOnComplete(() =>
+        LeanTween.alpha(faderImage, 0, 0.7f).setOnComplete(() =>
         {
             faderImage.gameObject.SetActive(false);
         });
@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
         AudioManager.Instance.ButtonSound();
         faderImage.gameObject.SetActive(true);
         LeanTween.alpha(faderImage, 0, 0);
-        LeanTween.alpha(faderImage, 1, 0.5f).setOnComplete(() =>
+        LeanTween.alpha(faderImage, 1, 0.7f).setOnComplete(() =>
         {
             Time.timeScale = 1f; //Animasyon bitmeden oyunu tekrar baþlatýnca 1 olmuyor. Kontrol amaçlý tekrardan 1 yapýyoruz.
             DOTween.KillAll(); //Yeni sahne yüklenirken tweenler uyarý vermemesi için
@@ -35,7 +35,7 @@ public class SceneTransition : MonoBehaviour
         AudioManager.Instance.ButtonSound();
         faderImage.gameObject.SetActive(true);
         LeanTween.alpha(faderImage, 0, 0);
-        LeanTween.alpha(faderImage, 1, 0.5f).setOnComplete(() =>
+        LeanTween.alpha(faderImage, 1, 0.7f).setOnComplete(() =>
         {
             LanguageManager.Instance.isFirstScene = true;
             Time.timeScale = 1f;
@@ -50,7 +50,7 @@ public class SceneTransition : MonoBehaviour
         GameManager.Instance.ShowRewardedAd(); //Rewarded reklam butona atalý
         faderImage.gameObject.SetActive(true);
         LeanTween.alpha(faderImage, 0, 0);
-        LeanTween.alpha(faderImage, 1, 0.5f).setOnComplete(() =>
+        LeanTween.alpha(faderImage, 1, 0.7f).setOnComplete(() =>
         {
             Time.timeScale = 1f; //Animasyon bitmeden oyunu tekrar baþlatýnca 1 olmuyor. Kontrol amaçlý tekrardan 1 yapýyoruz.
             DOTween.KillAll(); //Yeni sahne yüklenirken tweenler uyarý vermemesi için

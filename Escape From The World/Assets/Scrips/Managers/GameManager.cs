@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 
 public class GameManager : MonoBehaviour
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     string yellowHexCode = "#FFDE00";
     Color colorFromHex;
     Animator bestScoreAnim;
+    public Light2D pointLight;
 
     //EnvironmentLight
     Animator anim;
@@ -192,7 +194,7 @@ public class GameManager : MonoBehaviour
         }        
 
         bestScore.text = PlayerPrefs.GetFloat(nameof(score)).ToString(); //güncel bestscore u yazdýrdýk
-        gameOverPanel.DOAnchorPos(new Vector3(-195, -58, 0), 0.31f).SetEase(Ease.InBounce); //0.1 yapýyorum çünkü telefonlarda çok yavaþ (0.4f)   
+        gameOverPanel.DOAnchorPos(new Vector3(-195, -50, 0), 5.4f).SetEase(Ease.OutQuart); //0.1 yapýyorum çünkü telefonlarda çok yavaþ (0.4f)   
         TMP_Text mainMenuText = mainMenuButton.GetComponentInChildren<TMP_Text>();
         TMP_Text startOverText = startOverButton.GetComponentInChildren<TMP_Text>();
         yield return new WaitForSeconds(2.5f);
@@ -282,5 +284,15 @@ public class GameManager : MonoBehaviour
     public void Tutorial()
     {
 
+    }
+
+    public void blinkPointLight(float intensity, float time)
+    {
+        pointLight.DOKill();
+        // 3'ten 6'ya 0.4 saniyede çýkar, sonra 0.4 saniyede geri indir (Yoyo)
+        // 2 kere tekrarla dememizin sebebi: (1 git + 1 gel = 2)
+        DOTween.To(() => pointLight.intensity, x => pointLight.intensity = x, intensity, time) // 6f 0.15f
+               .SetLoops(2, LoopType.Yoyo)
+               .SetEase(Ease.OutQuad); // Baþta hýzlý, sonda yumuþak duruþ
     }
 }

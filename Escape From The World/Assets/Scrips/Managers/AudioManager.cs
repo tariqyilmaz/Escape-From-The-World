@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,9 +26,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Image musicOff;
     private bool isSound = true;
     private bool isMusic = true;
-    private bool isFirstScene = true; //Ses tuþlarýnýn çalýþmasý için kontrolcü
+    private bool isFirstScene = true; //Ses tuï¿½larï¿½nï¿½n ï¿½alï¿½ï¿½masï¿½ iï¿½in kontrolcï¿½
 
-    public int adCounter = 10; // Bunu burada tanýmlamak zorunda kaldým çünkü Gamemanager yeniden baþladýðý için sayaçlar da yeniden baþlýyordu sürekli
+    public int adCounter = 10; // Bunu burada tanï¿½mlamak zorunda kaldï¿½m ï¿½ï¿½nkï¿½ Gamemanager yeniden baï¿½ladï¿½ï¿½ï¿½ iï¿½in sayaï¿½lar da yeniden baï¿½lï¿½yordu sï¿½rekli
     bool isMusicFinish;
 
     private void Awake()
@@ -115,7 +115,7 @@ public class AudioManager : MonoBehaviour
             isMusic = true;
             gameMusic.volume = 0.3f;
             gameMusicLoop.volume = 0.3f;
-            //Müzikler buraya eklenecek
+            //Mï¿½zikler buraya eklenecek
         }
         Save();
     }
@@ -204,18 +204,18 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (isFirstScene) //Ses tuþlarýnýn çalýþmasý için kontrolcü
+        if (isFirstScene)
         {
             isFirstScene = false;
             return;
         }
-        // Yeni sahnede UI’leri tekrar baðlamayý dene
+        // Yeni sahnede UIï¿½leri tekrar baï¿½lamayï¿½ dene
         soundOn = GameObject.Find("SoundOn")?.GetComponent<Image>();
         soundOff = GameObject.Find("SoundOff")?.GetComponent<Image>();
         musicOn = GameObject.Find("MusicOn")?.GetComponent<Image>();
         musicOff = GameObject.Find("MusicOff")?.GetComponent<Image>();
 
-        //BURADAN DEVAM ---> RESTARTTAN SONRA ÝCONLAR GÝBÝ BUTONLARDA KAYBOLUYOR. ONLARI GERÝ GETÝRÝCEZ 
+        //BURADAN DEVAM ---> RESTARTTAN SONRA ï¿½CONLAR Gï¿½Bï¿½ BUTONLARDA KAYBOLUYOR. ONLARI GERï¿½ GETï¿½Rï¿½CEZ 
         Button soundBtn = GameObject.Find("SoundButtons")?.GetComponent<Button>();
         Button musicBtn = GameObject.Find("MusicButtons")?.GetComponent<Button>();
 
@@ -237,3 +237,4 @@ public class AudioManager : MonoBehaviour
         }
     }
 }
+

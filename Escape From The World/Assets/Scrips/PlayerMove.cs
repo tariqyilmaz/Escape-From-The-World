@@ -48,6 +48,16 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        // Null checks to prevent UnassignedReferenceException
+        if (doubleJumpLeft == null || doubleJumpRight == null || 
+            doubleJumpLeftWaitBar == null || doubleJumpRightWaitBar == null ||
+            doubleJumpLeftWaitBarPicture == null || doubleJumpRightWaitBarPicture == null)
+        {
+            Debug.LogWarning("PlayerMove: Some DoubleJump references are not assigned in the Inspector!");
+            return;
+        }
+        
         interactableLeft = doubleJumpLeft.GetComponent<Button>();
         interactableRight = doubleJumpRight.GetComponent<Button>();
         leftWaitBar = doubleJumpLeftWaitBar.GetComponent<Slider>();
@@ -189,6 +199,17 @@ public class PlayerMove : MonoBehaviour
 
     public void DoubleJumpButtonAnimation(int loop,float time)
     {
+        // Eski tweenleri temizle - PERFORMANS DÜZELTMESİ
+        // Bu olmadan her çağrıda yeni tween birikiyordu ve memory leak oluşuyordu
+        if (jumpButtonLeftAnim != null && jumpButtonLeftAnim.IsActive())
+        {
+            jumpButtonLeftAnim.Kill();
+        }
+        if (jumpButtonRightAnim != null && jumpButtonRightAnim.IsActive())
+        {
+            jumpButtonRightAnim.Kill();
+        }
+        
         jumpButtonLeftAnim = doubleJumpLeftWaitBarPicture
             .DOScale(27f, time) //time = 0.30
             .From(34f) 

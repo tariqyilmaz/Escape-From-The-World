@@ -105,6 +105,8 @@ public class LanguageManager : MonoBehaviour
 
     private void UpdateLanguageState()
     {
+        if (currentFlaga == null) return; // Null check to prevent NullReferenceException
+        
         switch (currentLanguage)
         {
             case Languages.TURKISH:
@@ -179,6 +181,22 @@ public class LanguageManager : MonoBehaviour
         }
     }
 
+    public void RegisterUIElements(Image flagImage, GameObject langTab, Button flagBtn)
+    {
+        currentFlaga = flagImage;
+        languageTaba = langTab;
+
+        if (flagBtn != null)
+        {
+            flagBtn.onClick.RemoveAllListeners();
+            // MenuManager'ýn instance olduðundan emin olarak dinleyici ekle
+            if (MenuManager.Instance != null)
+                flagBtn.onClick.AddListener(MenuManager.Instance.OpenLanguageTab);
+        }
+
+        UpdateLanguageState(); // Yeni gelen objenin görselini hemen güncelle
+    }
+
     #region Dictionary
     private void LoadAllTranslations()
     {
@@ -187,13 +205,19 @@ public class LanguageManager : MonoBehaviour
         // --- TÜRKÇE METÝNLER (Anahtar: TURKISH) ---
         var trTexts = new Dictionary<string, string>
         {
-            {"key_start_button", "BAÞLA"},
+            {"key_start_button", "BASLA"},
             {"key_game_mode", "Oyun Modu"},
-            {"key_main_menu", "ANA MENÜ"},
+            {"key_main_menu", "ANA MENU"},
             {"key_restart", "TEKRAR OYNA"},
             {"key_game_over", "OYUN BÝTTÝ"},
             {"key_best_score", "EN ÝYÝ PUAN"},
             {"key_score", "PUAN"},
+            {"key_settings", "AYARLAR"},
+            {"key_settings_sound", "Ses"},
+            {"key_settings_music", "Muzik"},
+            {"key_settings_language", "Dil"},
+            {"key_settings_tutorial", "Ogretici"},
+            {"key_settings_back", "Geri"},
         };
         allTranslations.Add(Languages.TURKISH.ToString(), trTexts); //TURKISH dicitonary'sine  trTexts dictionarysini ekliyor
 
@@ -207,6 +231,12 @@ public class LanguageManager : MonoBehaviour
             {"key_game_over", "GAME OVER"},
             {"key_best_score", "BEST SCORE"},
             {"key_score", "SCORE"},
+            {"key_settings", "SETTINGS"},
+            {"key_settings_sound", "Sound"},
+            {"key_settings_music", "Music"},
+            {"key_settings_language", "Language"},
+            {"key_settings_tutorial", "Tutorial"},
+            {"key_settings_back", "Back"},
         };
         allTranslations.Add(Languages.ENGLISH.ToString(), enTexts);
 
@@ -215,11 +245,17 @@ public class LanguageManager : MonoBehaviour
         {
             {"key_start_button", "STARTEN"},
             {"key_game_mode", "Spielmodus"},
-            {"key_main_menu", "HAUPTMENÜ"},
+            {"key_main_menu", "HAUPTMENU"},
             {"key_restart", "ERNEUT SPIELEN"},
             {"key_game_over", "SPIEL VORBEI"},
             {"key_best_score", "ESTER PUNKTESTAND"},
             {"key_score", "PUNKTE"},
+            {"key_settings", "EINSTELLUNGEN"},
+            {"key_settings_sound", "Klang"},
+            {"key_settings_music", "Musik"},
+            {"key_settings_language", "Sprache"},
+            {"key_settings_tutorial", "Tutorial"},
+            {"key_settings_back", "Zuruck"},
         };
         allTranslations.Add(Languages.GERMAN.ToString(), deTexts);
 
@@ -233,6 +269,12 @@ public class LanguageManager : MonoBehaviour
             {"key_game_over", "FIN DEL JUEGO"},
             {"key_best_score", "MEJOR PUNTUACIÓN"},
             {"key_score", "PUNTOS"},
+            {"key_settings", "AJUSTES"},
+            {"key_settings_sound", "Sonido"},
+            {"key_settings_music", "Musica"},
+            {"key_settings_language", "Idioma"},
+            {"key_settings_tutorial", "Tutorial"},
+            {"key_settings_back", "Atras"},
         };
         allTranslations.Add(Languages.SPANISH.ToString(), esTexts);
     }

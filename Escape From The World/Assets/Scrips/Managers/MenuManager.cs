@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,9 +12,11 @@ public class MenuManager : MonoBehaviour
     public Button gameModeButton;
     public TMP_Text gameModeText;
     public bool isTouchScreen = false; //TouchScreen:true TouchButton:false
+    public GameObject buttonMode;
+    public GameObject screenMode;
     public GameObject languageTab;
+    public GameObject settingsPanel;
     public Image currentFlag;
-    
 
     private void Awake()
     {
@@ -26,8 +28,12 @@ public class MenuManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        float refreshRate = (float)Screen.currentResolution.refreshRateRatio.value;
-        Application.targetFrameRate = Mathf.RoundToInt(refreshRate);
+        
+        // Dinamik Frame Rate - Yuksek refresh rate ekranlarda (120Hz vb.)
+        // frame pacing sorunlarini onlemek icin ekranin destekledigi hizi kullan
+        int screenRefreshRate = (int)Screen.currentResolution.refreshRateRatio.value;
+        // Minimum 60 FPS, maksimum ekranin destekledigi
+        Application.targetFrameRate = Mathf.Clamp(screenRefreshRate, 60, 120);
     }
 
     void Start()
@@ -44,9 +50,20 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.GetInt("gameMode");
             Load();
         }
+        if (PlayerPrefs.GetInt("gameMode") == 0)
+        {
+            buttonMode.SetActive(true);
+            screenMode.SetActive(false);
+        }
+        else
+        {
+            buttonMode.SetActive(false);
+            screenMode.SetActive(true);
+        }
+        settingsPanel.SetActive(false);
     }
 
-    //-----Language Garanti Kýsmý-----
+    //-----Language Garanti KÄ±smÄ±-----
     public void OpenLanguageTab()
     {
         if (languageTab != null)
@@ -75,20 +92,25 @@ public class MenuManager : MonoBehaviour
         LanguageManager.Instance.selectSpanish();
     }
 
-    //-----OYUN MODU BELÝRLEME-----
+    //-----OYUN MODU BELÄ°RLEME-----
 
-    public void SelectGameMode()
+    public void SelectButtonMode()
     {
         if (isTouchScreen)
         {
+            buttonMode.SetActive(true);
+            screenMode.SetActive(false);
             isTouchScreen = false;
-            gameModeText.text = "Touch Button";
             Save();
         }
-        else
+    }
+    public void SelectScreenMode()
+    {
+        if (!isTouchScreen)
         {
+            buttonMode.SetActive(false);
+            screenMode.SetActive(true);
             isTouchScreen = true;
-            gameModeText.text = "Touch Screen";
             Save();
         }
     }
@@ -109,4 +131,15 @@ public class MenuManager : MonoBehaviour
             gameModeText.text = "Touch Button";
         }
     }
+
+    public void enterSettingsPanel()
+    {
+        settingsPanel.SetActive(true);
+    }
+    
+    public void quitSettingsPanel()
+    {
+        settingsPanel.SetActive(false);
+    }
 }
+
