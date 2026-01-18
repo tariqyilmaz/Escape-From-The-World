@@ -1,0 +1,5 @@
+# ninja log v5
+4	214	7901916663002418	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	7c6f0b4989b1c1b7
+214	373	7901916664429719	D:/Software/Unity/Escape From The World/Escape From The World/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/55484q3c/obj/arm64-v8a/libswappywrapper.so	1af854750c9d8762
+7	231	7901921085098178	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	7c6f0b4989b1c1b7
+232	386	7901921086588228	D:/Software/Unity/Escape From The World/Escape From The World/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/55484q3c/obj/arm64-v8a/libswappywrapper.so	1af854750c9d8762

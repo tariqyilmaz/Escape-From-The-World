@@ -6,17 +6,17 @@ using UnityEngine;
 public class MoveFloor : MonoBehaviour
 {
     [SerializeField]private float jumpForce;
-    private Vector2 pointA; //MoveFloor'un gittiði yerler
-    private Vector2 pointB; //MoveFloor'un gittiði yerler
+    private Vector2 pointA; //MoveFloor'un gittiï¿½i yerler
+    private Vector2 pointB; //MoveFloor'un gittiï¿½i yerler
     public static float floorSpeed;
     public bool isRight = false;
-    private int isOneJump = 1; //Spawn için oluþturduðumuz sayýyý kontrol etmek için oluþturdum. 1 yazdýðým için bir kere dokunduðunda objeyi saymýþ oluyor.
+    private int isOneJump = 1; //Spawn iï¿½in oluï¿½turduï¿½umuz sayï¿½yï¿½ kontrol etmek iï¿½in oluï¿½turdum. 1 yazdï¿½ï¿½ï¿½m iï¿½in bir kere dokunduï¿½unda objeyi saymï¿½ï¿½ oluyor.
     Animator anim;
 
     private void Start()
     {
         int moveLocation;
-        int randomMoveDirection = Random.Range(0, 2); //Baþlatma yönleri her zaman ayný yönde olmasýn diye
+        int randomMoveDirection = Random.Range(0, 2); //Baï¿½latma yï¿½nleri her zaman aynï¿½ yï¿½nde olmasï¿½n diye
         if (randomMoveDirection == 0)
         {
             moveLocation = 5;
@@ -47,12 +47,12 @@ public class MoveFloor : MonoBehaviour
 
             if (rb != null)
             {
-                Vector2 jumpSpeed = rb.velocity;
+                Vector2 jumpSpeed = rb.linearVelocity;
                 jumpSpeed.y = jumpForce;
-                rb.velocity = jumpSpeed;
+                rb.linearVelocity = jumpSpeed;
                 isOneJump -= 1;
             }
-            anim.SetBool("isTrigger", true); //Yok olma animasyonunu çaðýrdý
+            anim.SetBool("isTrigger", true); //Yok olma animasyonunu ï¿½aï¿½ï¿½rdï¿½
             Destroy(gameObject, 1.1f);         //Yok etti
         }
 

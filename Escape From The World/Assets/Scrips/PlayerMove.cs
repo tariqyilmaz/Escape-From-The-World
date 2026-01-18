@@ -84,7 +84,7 @@ public class PlayerMove : MonoBehaviour
         currentVel = Mathf.MoveTowards(currentVel, targetVel, rate * Time.deltaTime);
 
         // Rigidbody’ye uygula
-        rb.velocity = new Vector2(currentVel, rb.velocity.y);
+        rb.linearVelocity = new Vector2(currentVel, rb.linearVelocity.y);
 
         horizontalSpeed = Input.GetAxis("Horizontal");  //Normal oyunda kapalı olacak
         if (isCLickDoubleJump == true) DoubleJumpWaitBar();
@@ -138,9 +138,9 @@ public class PlayerMove : MonoBehaviour
     //-----Double Jump Bölümü------
     public void DoubleJump()
     {
-        Vector2 jumpSpeed = rb.velocity;
+        Vector2 jumpSpeed = rb.linearVelocity;
         jumpSpeed.y = doubleJumpForce;
-        rb.velocity = jumpSpeed;
+        rb.linearVelocity = jumpSpeed;
     }
 
     IEnumerator waitDoubleJump() //Butona bastıktan sonra bir süre butonu inaktif ediyor.

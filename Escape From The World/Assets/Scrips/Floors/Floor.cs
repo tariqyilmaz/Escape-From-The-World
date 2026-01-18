@@ -10,11 +10,11 @@ public class Floor : MonoBehaviour
 {
     [SerializeField]private float jumpForce;
     public FloorGenerator floorGenerator;
-    private int isOneJump = 1; //Spawn için oluþturduðumuz sayýyý kontrol etmek için oluþturdum. 1 yazdýðým için bir kere dokunduðunda objeyi saymýþ oluyor.
+    private int isOneJump = 1; //Spawn iï¿½in oluï¿½turduï¿½umuz sayï¿½yï¿½ kontrol etmek iï¿½in oluï¿½turdum. 1 yazdï¿½ï¿½ï¿½m iï¿½in bir kere dokunduï¿½unda objeyi saymï¿½ï¿½ oluyor.
     Animator anim;
     private enum Floors {FLOOR, JUMPERFLOOR, POWERUPFLOOR}
     private Floors floorType = Floors.FLOOR;
-    float[] pitchValues = { 0.97f, 1f, 1f, 1f, 1.05f }; //Ses deðerleri için aralýk
+    float[] pitchValues = { 0.97f, 1f, 1f, 1f, 1.05f }; //Ses deï¿½erleri iï¿½in aralï¿½k
     public static float randomPitch;
 
     string hexCode = "#FFBE00";
@@ -26,7 +26,7 @@ public class Floor : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         spotlight2D = GetComponentInChildren<Light2D>();
-        randomPitch = pitchValues[Random.Range(0, pitchValues.Length)]; //Rasgele bir ses araýðý seçimi
+        randomPitch = pitchValues[Random.Range(0, pitchValues.Length)]; //Rasgele bir ses araï¿½ï¿½ï¿½ seï¿½imi
         
         int selectFloor = Random.Range(0,36);
         if (selectFloor<6 && gameObject.tag != "MenuStartFloor")
@@ -60,10 +60,10 @@ public class Floor : MonoBehaviour
     {
         if (collision.relativeVelocity.y < 0)
         {
-            //O platforma ilk iniþini yaptýðý an
+            //O platforma ilk iniï¿½ini yaptï¿½ï¿½ï¿½ an
             if (floorType == Floors.POWERUPFLOOR && GameManager.Instance.stage != GameManager.GameStage.INPOWERUP)
             {
-                GameManager.Instance.stage = GameManager.GameStage.POWERUP; //PowerUp Bölümüne geçiþ
+                GameManager.Instance.stage = GameManager.GameStage.POWERUP; //PowerUp Bï¿½lï¿½mï¿½ne geï¿½iï¿½
             }
             if (gameObject.tag != "MenuStartFloor")
             {
@@ -82,7 +82,7 @@ public class Floor : MonoBehaviour
                 
             }
             
-            //Ses için obje zemin kontrolü
+            //Ses iï¿½in obje zemin kontrolï¿½
             if (floorType == Floors.JUMPERFLOOR) 
             {
                 AudioManager.Instance.floorName = AudioManager.FloorName.JUMPERFLOOR;
@@ -97,9 +97,9 @@ public class Floor : MonoBehaviour
 
             if (rb != null)
             {
-                Vector2 jumpSpeed = rb.velocity;
+                Vector2 jumpSpeed = rb.linearVelocity;
                 jumpSpeed.y = jumpForce;
-                rb.velocity = jumpSpeed;
+                rb.linearVelocity = jumpSpeed;
                 isOneJump -=1;
                 
             }
@@ -107,7 +107,7 @@ public class Floor : MonoBehaviour
             {
                 anim.SetBool("extraJumper", false); //ekstra jump animasyonunu iptal ediyoruz
                 anim.SetBool("powerUp", false); //powerUp animasyonunu iptal ediyoruz
-                anim.SetBool("isTrigger", true); //Yok olma animasyonunu çaðýrdý
+                anim.SetBool("isTrigger", true); //Yok olma animasyonunu ï¿½aï¿½ï¿½rdï¿½
                 Destroy(gameObject, 1.1f);         //Yok etti
             }
         }

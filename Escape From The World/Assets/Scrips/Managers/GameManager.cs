@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
         }        
 
         bestScore.text = PlayerPrefs.GetFloat(nameof(score)).ToString(); //güncel bestscore u yazdýrdýk
-        gameOverPanel.DOAnchorPos(new Vector3(-195, -50, 0), 5.4f).SetEase(Ease.OutQuart); //0.1 yapýyorum çünkü telefonlarda çok yavaþ (0.4f)   
+        gameOverPanel.DOAnchorPos(new Vector3(-195, -50, 0), 5.5f).SetEase(Ease.OutQuart); //0.1 yapýyorum çünkü telefonlarda çok yavaþ (0.4f)   
         TMP_Text mainMenuText = mainMenuButton.GetComponentInChildren<TMP_Text>();
         TMP_Text startOverText = startOverButton.GetComponentInChildren<TMP_Text>();
         yield return new WaitForSeconds(2.5f);
