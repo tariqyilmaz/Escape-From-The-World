@@ -19,7 +19,9 @@ public class AdManager : MonoBehaviour
     string adInterstitialID = "ca-app-pub-3885973286274777/5645171049"; //Test: ca-app-pub-3940256099942544/1033173712  Reel:ca-app-pub-3885973286274777/5645171049
     string adRewardedID = "ca-app-pub-3885973286274777/9975298294"; //Test: ca-app-pub-3940256099942544/1033173712  Reel:ca-app-pub-3885973286274777/9975298294
 #elif UNITY_IPHONE 
-        //Ýlerde
+    string adBannerID = "ca-app-pub-3885973286274777/1310018409"; //Test:   Reel:ca-app-pub-3885973286274777/1310018409
+    string adInterstitialID = "ca-app-pub-3885973286274777/9902824296"; //Test:   Reel:ca-app-pub-3885973286274777/5645171049
+    string adRewardedID = "ca-app-pub-3885973286274777/5320727241"; //Test:   Reel:ca-app-pub-3885973286274777/9975298294
 #else
 
 #endif
